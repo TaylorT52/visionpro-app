@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>Timestamp</key>
+					<string>731890531.5973819</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>home-directory</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Coding - Stanford/untitled.dae</string>
+					</dict>
+				</dict>
+				<key>type</key>
+				<string>DVTDocumentLocation</string>
+			</dict>
+			<key>title</key>
+			<string>Scene graph</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>

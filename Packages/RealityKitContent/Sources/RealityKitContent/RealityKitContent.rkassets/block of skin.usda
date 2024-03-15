@@ -1,0 +1,127 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def Cube "Cube" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/BrownLeather> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (3, 0.5, 1.5)
+        float3 xformOp:translate = (0, 0.34076875, -1.0871189)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/Cube/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+    }
+
+    def "BrownLeather" (
+        active = true
+        prepend references = @BrownLeather.usdz@
+    )
+    {
+        color3f inputs:Basecolor_Tint (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-45.51249, 49.172512)
+                    float2 sizeInSubgraph = (160.5, 53)
+                    int stackingOrderInSubgraph = 2268
+                }
+            }
+        )
+        float2 inputs:UV_Scale (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-695.3267, 352.1356)
+                    float2 sizeInSubgraph = (138.5, 53)
+                    int stackingOrderInSubgraph = 2240
+                }
+            }
+        )
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+        over "Mix"
+        {
+            float2 ui:nodegraph:node:size = (109, 145)
+        }
+
+        over "Swizzle_1"
+        {
+            float2 ui:nodegraph:node:size = (145.5, 53)
+        }
+
+        over "Swizzle"
+        {
+            float2 ui:nodegraph:node:size = (133.5, 40)
+        }
+
+        over "Multiply_1"
+        {
+            float2 ui:nodegraph:node:size = (60, 36)
+        }
+
+        over "Dot"
+        {
+            float2 ui:nodegraph:node:size = (44, 18)
+        }
+
+        over "multiply"
+        {
+            float2 ui:nodegraph:node:size = (60, 36)
+        }
+
+        over "add"
+        {
+            float2 ui:nodegraph:node:size = (61.5, 36.5)
+        }
+
+        over "PreviewSurface"
+        {
+            float2 ui:nodegraph:node:size = (148.5, 199)
+        }
+
+        over "BaseColor"
+        {
+            float2 ui:nodegraph:node:size = (158.5, 235)
+        }
+
+        over "Roughness"
+        {
+            float2 ui:nodegraph:node:size = (158.5, 235)
+        }
+
+        over "Metallic"
+        {
+            float2 ui:nodegraph:node:size = (158.5, 235)
+        }
+
+        over "Normal"
+        {
+            float2 ui:nodegraph:node:size = (158.5, 235)
+        }
+    }
+}
+

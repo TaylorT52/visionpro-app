@@ -1,0 +1,335 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root" (
+    prepend apiSchemas = ["MaterialBindingAPI"]
+)
+{
+    reorder nameChildren = ["GridMaterial", "Saturn"]
+    rel material:binding = None (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+
+    def "GridMaterial" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+        references = @Materials/GridMaterial.usda@
+    )
+    {
+        reorder nameChildren = ["Saturn", "GridMaterial"]
+        rel material:binding = </Root/GridMaterial/Saturn/geom/realistic/materials/usdpreviewsurface1sg1> (
+            bindMaterialAs = "strongerThanDescendants"
+        )
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.004147798, 1.8, 0.30364138)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "GridMaterial"
+        {
+            reorder nameChildren = ["DefaultSurfaceShader", "MaterialXPreviewSurface", "Texcoord", "Multiply", "Fractional", "BaseColor", "LineColor", "LineWidths", "LineCounts", "Remap", "Separate2", "Combine3", "Range", "Subtract", "Absval", "Min", "Saturn"]
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+            over "MaterialXPreviewSurface"
+            {
+                float2 ui:nodegraph:node:size = (207.5, 307)
+            }
+
+            over "Remap"
+            {
+                float2 ui:nodegraph:node:size = (94, 181)
+            }
+
+            over "Fractional"
+            {
+                float2 ui:nodegraph:node:size = (154.5, 109)
+            }
+
+            over "Multiply"
+            {
+                float2 ui:nodegraph:node:size = (60, 36)
+            }
+
+            over "Combine3"
+            {
+                float2 ui:nodegraph:node:size = (145, 54)
+            }
+
+            over "Subtract"
+            {
+                float2 ui:nodegraph:node:size = (61.5, 36)
+            }
+
+            over "Absval"
+            {
+                float2 ui:nodegraph:node:size = (121.5, 53)
+            }
+
+            over "BaseColor"
+            {
+                float2 ui:nodegraph:node:size = (151, 53)
+            }
+
+            over "LineColor"
+            {
+                float2 ui:nodegraph:node:size = (151, 53)
+            }
+
+            over "Texcoord"
+            {
+                float2 ui:nodegraph:node:size = (180.5, 53)
+            }
+
+            over "LineCounts"
+            {
+                float2 ui:nodegraph:node:size = (151.5, 53)
+            }
+
+            over "LineWidths"
+            {
+                float2 ui:nodegraph:node:size = (150, 53)
+            }
+
+            over "Separate2"
+            {
+                float2 ui:nodegraph:node:size = (115, 127)
+            }
+
+            over "Min"
+            {
+                float2 ui:nodegraph:node:size = (113, 40)
+            }
+
+            over "Range"
+            {
+                float2 ui:nodegraph:node:size = (98, 217)
+            }
+        }
+
+        def "Saturn" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            references = @Saturn.usdz@
+        )
+        {
+            rel material:binding = None (
+                bindMaterialAs = "strongerThanDescendants"
+            )
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            float3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "geom"
+            {
+                over "realistic"
+                {
+                    over "materials"
+                    {
+                        over "usdpreviewsurface2sg1"
+                        {
+                            string inputs:file9:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (404.875, 794)
+                                        float2 sizeInSubgraph = (153, 53)
+                                    }
+                                }
+                            )
+                            string inputs:file11:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (621.875, 794)
+                                        float2 sizeInSubgraph = (157, 53)
+                                    }
+                                }
+                            )
+                            string inputs:file14:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (841.375, 794)
+                                        float2 sizeInSubgraph = (159.5, 53)
+                                    }
+                                }
+                            )
+                            string inputs:file16:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (1060.875, 794)
+                                        float2 sizeInSubgraph = (159.5, 53)
+                                    }
+                                }
+                            )
+                            token outputs:realitykit:vertex
+                            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1378.25, 275.875)
+                            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                            over "saturn_ring_realistic_mat_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (1104.75, 275.875)
+                                float2 ui:nodegraph:node:size = (245.5, 199)
+                            }
+
+                            over "file14_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (563.5, 438.5)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+
+                            over "Lookup_st"
+                            {
+                                float2 ui:nodegraph:node:pos = (72.5, 388.5)
+                                float2 ui:nodegraph:node:size = (145, 127)
+                            }
+
+                            over "file11_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (304.5, 358.5)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+
+                            over "file11_mtlx_scale"
+                            {
+                                float2 ui:nodegraph:node:pos = (563.5, 261)
+                                float2 ui:nodegraph:node:size = (60, 36)
+                            }
+
+                            over "file11_mtlx_offset"
+                            {
+                                float2 ui:nodegraph:node:pos = (822.5, 261)
+                                float2 ui:nodegraph:node:size = (61.5, 36.5)
+                            }
+
+                            over "file9_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (822.5, 608)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+
+                            over "file16_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (304.5, 99.5)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+                        }
+
+                        over "usdpreviewsurface1sg1"
+                        {
+                            string inputs:file5:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (417.625, 710.75)
+                                        float2 sizeInSubgraph = (153, 53)
+                                    }
+                                }
+                            )
+                            string inputs:file6:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (630.625, 710.75)
+                                        float2 sizeInSubgraph = (153, 53)
+                                    }
+                                }
+                            )
+                            string inputs:file7:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (842.125, 710.75)
+                                        float2 sizeInSubgraph = (151.5, 53)
+                                    }
+                                }
+                            )
+                            string inputs:file8:varname (
+                                customData = {
+                                    dictionary realitykit = {
+                                        float2 positionInSubgraph = (1055.625, 710.75)
+                                        float2 sizeInSubgraph = (153.5, 53)
+                                    }
+                                }
+                            )
+                            token outputs:realitykit:vertex
+                            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1382.75, 279)
+                            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+
+                            over "saturn_body_realistic_mat_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (1107, 279)
+                                float2 ui:nodegraph:node:size = (250, 199)
+                            }
+
+                            over "file8_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (304.5, 518.5)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+
+                            over "Lookup_st"
+                            {
+                                float2 ui:nodegraph:node:pos = (72.5, 299)
+                                float2 ui:nodegraph:node:size = (145, 127)
+                            }
+
+                            over "file8_mtlx_scale"
+                            {
+                                float2 ui:nodegraph:node:pos = (563.5, 606)
+                                float2 ui:nodegraph:node:size = (60, 36)
+                            }
+
+                            over "file8_mtlx_offset"
+                            {
+                                float2 ui:nodegraph:node:pos = (822.5, 606)
+                                float2 ui:nodegraph:node:size = (61.5, 36.5)
+                            }
+
+                            over "file5_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (563.5, 428.5)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+
+                            over "file6_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (822.5, 259)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+
+                            over "file7_mtlx"
+                            {
+                                float2 ui:nodegraph:node:pos = (304.5, 99.5)
+                                float2 ui:nodegraph:node:size = (148.5, 199)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "VFXEmitter"
+        {
+            uniform token info:id = "RealityKit.VFXEmitter"
+
+            def RealityKitStruct "currentState"
+            {
+                def RealityKitStruct "mainEmitter"
+                {
+                    float spreadingAngle = 0
+                    float4 startColorA = (0, 0.8558521, 0.68441385, 1)
+                    float4 startColorB = (1, 1, 1, 1)
+                    bool useStartColorRange = 1
+                }
+
+                def RealityKitStruct "spawnedEmitter"
+                {
+                }
+            }
+        }
+    }
+}
+
