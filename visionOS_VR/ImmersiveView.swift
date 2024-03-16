@@ -26,11 +26,15 @@ struct ImmersiveView: View {
             
             //saturn entity
             let saturnEntity = await createSaturnModel()
+            saturnEntity.setPosition(SIMD3<Float>(-0.05, -0.2, 0.1), relativeTo: nil)
             content.add(saturnEntity)
             
             //skin block entity
             let skinEntity = await createSkinModel()
             content.add(skinEntity)
+            
+            print(getEntityPos(entityName: skinEntity))
+            print(getEntityPos(entityName: saturnEntity)) //should be not 0, 0, 0
             
 //            //triangle entity
 //            if let triangleEntity = createTriEntity() {
@@ -91,7 +95,7 @@ struct ImmersiveView: View {
     private func createTriEntity () -> Entity? {
         /* CREATING THE MESH*/
         //coordinates
-        let positions: [SIMD3<Float>] = [[-1, -1, 0], [1, -1, 0], [0, 1, 0]]
+        let _: [SIMD3<Float>] = [[-1, -1, 0], [1, -1, 0], [0, 1, 0]]
         
         //creating mesh with those coordinates
         var descr = MeshDescriptor(name: "triangle")
@@ -113,6 +117,10 @@ struct ImmersiveView: View {
         
         /* RETURNING THE ENTITY*/
         return generatedModel
+    }
+    
+    private func getEntityPos (entityName: Entity) -> SIMD3<Float> {
+        return entityName.position(relativeTo: nil)
     }
 }
 
