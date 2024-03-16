@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 //struct gestureTesting: View {
 //    var body: some View {
@@ -27,20 +28,36 @@ import SwiftUI
 
 struct gestureTesting: View {
     @State private var isDragging = false
-
-
+  
     var drag: some Gesture {
         DragGesture()
             .onChanged { _ in self.isDragging = true }
             .onEnded { _ in self.isDragging = false }
+            
     }
 
-
     var body: some View {
-        Circle()
-            .fill(self.isDragging ? Color.red : Color.blue)
-            .frame(width: 100, height: 100, alignment: .center)
-            .gesture(drag)
+        
+        VStack{
+            Spacer()
+            
+            Circle()
+                .fill(.red)
+                .frame(width: 100, height: 100)
+                .onTapGesture(coordinateSpace: .global) { location in
+                    print("Tapped at \(location)")
+                }
+            
+            Spacer(minLength: 10)
+            
+            Circle()
+                .fill(self.isDragging ? Color.red : Color.blue)
+                .frame(width: 100, height: 100, alignment: .center)
+                .gesture(drag)
+            
+            Spacer()
+            
+        }
     }
 }
 
