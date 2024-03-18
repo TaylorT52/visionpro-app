@@ -53,11 +53,16 @@ struct gestureTesting: View {
             Circle()
                 .fill(self.isDragging ? Color.red : Color.blue)
                 .frame(width: 100, height: 100, alignment: .center)
-                .gesture(drag)
+                //.gesture(drag)
+                .onTouch(limitToBounds: false, perform: updateLocation)
             
             Spacer()
             
         }
+    }
+    
+    func updateLocation(_ location: CGPoint) {
+        print(location)
     }
 }
 

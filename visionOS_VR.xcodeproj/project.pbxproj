@@ -17,6 +17,7 @@
 		113B11932B81E74F00970B51 /* ImageBasedLighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = 113B11922B81E74F00970B51 /* ImageBasedLighting.skybox */; };
 		113B11952B81E75200970B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113B11942B81E75200970B51 /* Assets.xcassets */; };
 		113B11982B81E75200970B51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113B11972B81E75200970B51 /* Preview Assets.xcassets */; };
+		11CAE0CB2BA7F51200E0F464 /* TouchLocatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CAE0CA2BA7F51200E0F464 /* TouchLocatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		113B11942B81E75200970B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		113B11972B81E75200970B51 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		113B11992B81E75200970B51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11CAE0CA2BA7F51200E0F464 /* TouchLocatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchLocatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				113B11902B81E74F00970B51 /* ImmersiveView.swift */,
 				1114379B2B8DAE0900A0C1FD /* realityKitPlay.swift */,
 				112774D62BA2186F006A463F /* gestureTesting.swift */,
+				11CAE0CA2BA7F51200E0F464 /* TouchLocatingView.swift */,
 				113B11922B81E74F00970B51 /* ImageBasedLighting.skybox */,
 				113B11942B81E75200970B51 /* Assets.xcassets */,
 				113B11992B81E75200970B51 /* Info.plist */,
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				113B118F2B81E74F00970B51 /* ContentView.swift in Sources */,
+				11CAE0CB2BA7F51200E0F464 /* TouchLocatingView.swift in Sources */,
 				113B118D2B81E74F00970B51 /* visionOS_VRApp.swift in Sources */,
 				113B11912B81E74F00970B51 /* ImmersiveView.swift in Sources */,
 				112774D72BA2186F006A463F /* gestureTesting.swift in Sources */,

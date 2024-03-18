@@ -10,9 +10,12 @@ import RealityKit
 import RealityKitContent
 
 struct ImmersiveView: View {
+    
+    @State var saturnEntity = Entity()
     var body: some View {
+        
         //reality view specifically tailored for immersive
-        RealityView { content in
+        RealityView { content, attachments in
             
             //create a skybox entity
             //skybox is giant sphere wrapped in image to represent a immersive view
@@ -42,9 +45,27 @@ struct ImmersiveView: View {
 //            } else {
 //                print("Error in loading triangle entity")
 //            }
+            
+            if let attachment = attachments.entity(for: "saturn_label") {
+                attachment.position = [-0.05, -0.2, -0.1]
+                            saturnEntity.addChild(attachment)
+            }
+                        
+        } attachments: {
+            Attachment(id: "saturn_label") {
+                Text("saturn planet")
+                    .font(.system(size: 48))
+            }
         }
-    }
-    
+        .gesture(
+            SpatialTapGesture()
+                .targetedToEntity(saturnEntity)
+                .onEnded { value in
+                    print(value)
+                }
+        )
+}
+
     private func createSkyBox () -> Entity? {
         
         //mesh (a large sphere)
@@ -122,6 +143,7 @@ struct ImmersiveView: View {
     private func getEntityPos (entityName: Entity) -> SIMD3<Float> {
         return entityName.position(relativeTo: nil)
     }
+    
 }
 
 #Preview {
