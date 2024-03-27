@@ -22,7 +22,7 @@ struct ContentView: View {
             Model3D(named: "Scene", bundle: realityKitContentBundle)
                 .padding(.bottom, 50)
             
-            SphereView()
+            BlockView()
 
             Text("Hello, world!")
 
