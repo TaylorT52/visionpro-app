@@ -12,11 +12,15 @@ import RealityKitContent
 struct ImmersiveView: View {
     
     @State var saturnEntity = Entity()
+    @State private var contentEntity = Entity()
+    @State var cube1 = ModelEntity()
+
     var body: some View {
         
         //reality view specifically tailored for immersive
         RealityView { content, attachments in
-            
+            content.add(setupContentEntity())
+            print("bobby")
             //create a skybox entity
             //skybox is giant sphere wrapped in image to represent a immersive view
             //skybox
@@ -28,48 +32,52 @@ struct ImmersiveView: View {
             }
             
             //saturn entity
-            let saturnEntity = await createSaturnModel()
-            saturnEntity.setPosition(SIMD3<Float>(-0.05, -0.2, 0.1), relativeTo: nil)
-            content.add(saturnEntity)
+//            let saturnEntity = await createSaturnModel()
+//            saturnEntity.setPosition(SIMD3<Float>(-0.05, -0.2, 0.1), relativeTo: nil)
+//            content.add(saturnEntity)
+            
+            //let saturnEntity = await addSaturn()
+            
+            cube1 = addCube(name: "Cube1", color: .red)
+            
+            if let attachment = attachments.entity(for: "cube1_label") {
+                attachment.position = [0, -0.35, 0]
+                cube1.addChild(attachment)
+            }
             
             //skin block entity
             let skinEntity = await createSkinModel()
             content.add(skinEntity)
             
             print(getEntityPos(entityName: skinEntity))
-            print(getEntityPos(entityName: saturnEntity)) //should be not 0, 0, 0
-            
-//            //triangle entity
-//            if let triangleEntity = createTriEntity() {
-//                content.add(triangleEntity)
-//            } else {
-//                print("Error in loading triangle entity")
+            //print(getEntityPos(entityName: saturnEntity))
+
+//            if let attachment = attachments.entity(for: "saturn_id") {
+//                attachment.position = [0.1, -0.2, -0.1]
+//                saturnEntity?.addChild(attachment)
 //            }
-            
-            if let attachment = attachments.entity(for: "saturn_label") {
-                attachment.position = [-0.05, -0.2, -0.1]
-                            saturnEntity.addChild(attachment)
-            }
                         
-        } attachments: {
-            Attachment(id: "saturn_label") {
-                Text("saturn planet")
+       } attachments: {
+            Attachment(id: "saturn_id") {
+                Text("cube")
                     .font(.system(size: 48))
+                    .colorMultiply(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
             }
         }
-        .gesture(
-            SpatialTapGesture()
-                .targetedToEntity(saturnEntity)
-                .onEnded { value in
-                    print(value)
-                }
-        )
+       .gesture(
+           SpatialTapGesture()
+               .targetedToEntity(cube1)
+               .onEnded { value in
+                   print(value.location)
+                   print(value.location3D)
+                  //playAnimation(entity: cube1)
+               }
+       )
 }
 
+    //creates a cube skybox
     private func createSkyBox () -> Entity? {
         
-        //mesh (a large sphere)
-        //let largeSphere = MeshResource.generateSphere(radius: 1000)
         
         let largeCube = MeshResource.generateBox(size: 1000)
         
@@ -142,6 +150,43 @@ struct ImmersiveView: View {
     
     private func getEntityPos (entityName: Entity) -> SIMD3<Float> {
         return entityName.position(relativeTo: nil)
+    }
+    
+//    func addSaturn() async -> ModelEntity? {
+//        guard let saturnEnt = try? await Entity(named: "Immersive", in: realityKitContentBundle) else {
+//            fatalError("Saturn Model not loading")
+//        }
+//
+//        await saturnEnt.components.set(InputTargetComponent(allowedInputTypes: .indirect))
+//        await saturnEnt.components.set(CollisionComponent(shapes: [ShapeResource.generateBox(size: SIMD3<Float>(repeating: 0.5))], isStatic: true))
+//        await saturnEnt.components.set(HoverEffectComponent())
+//
+//        await contentEntity.addChild(saturnEnt)
+//        
+//        return saturnEnt as? ModelEntity
+//    }
+    
+    
+    func setupContentEntity() -> Entity {
+        return contentEntity
+    }
+    
+    func addCube(name: String, color: UIColor) -> ModelEntity {
+        let entity = ModelEntity(
+            mesh: .generateBox(size: 0.5, cornerRadius: 0),
+            materials: [SimpleMaterial(color: color, isMetallic: false)],
+            collisionShape: .generateBox(size: SIMD3<Float>(repeating: 0.5)),
+            mass: 0.0
+        )
+
+        entity.name = name
+        entity.components.set(InputTargetComponent(allowedInputTypes: .indirect))
+        entity.components.set(CollisionComponent(shapes: [ShapeResource.generateBox(size: SIMD3<Float>(repeating: 0.5))], isStatic: true))
+        entity.components.set(HoverEffectComponent())
+
+        contentEntity.addChild(entity)
+        
+        return entity
     }
     
 }
